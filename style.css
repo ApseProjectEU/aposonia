@@ -998,27 +998,122 @@ body {
 .transport__close:hover { color: var(--paper); }
 
 /* ============================================================
-   RESPONSIVE
+   RESPONSIVE — Tablet (960px and down)
+   ============================================================ */
+@media (max-width: 960px) {
+  :root { --gutter: clamp(20px, 5vw, 60px); --max: 860px; }
+  .sect-head { column-gap: 24px; }
+  .mvt__metrics { gap: 0; }
+}
+
+/* ============================================================
+   RESPONSIVE — Mobile (720px and down)
    ============================================================ */
 @media (max-width: 720px) {
-  :root { --gutter: 24px; }
-  body { font-size: 17px; }
-  .front { min-height: 90vh; }
-  .front__title { font-size: clamp(60px, 22vw, 140px); }
-  .front__meta { grid-template-columns: 1fr; font-size: 10px; }
+  :root { --gutter: clamp(16px, 4vw, 24px); --max: 100%; }
+  
+  body { font-size: clamp(16px, 4.5vw, 19px); }
+  
+  .front { min-height: 90vh; padding-top: 32px; padding-bottom: 32px; }
+  .front__top { font-size: 10px; }
+  .front__center { padding: 40px 0; }
+  .front__genre { margin-bottom: 32px; font-size: 10px; }
+  .front__title { font-size: clamp(52px, 16vw, 120px); margin-bottom: 28px; }
+  .front__sub { font-size: clamp(15px, 3vw, 20px); margin-bottom: 60px; }
+  .front__meta { grid-template-columns: 1fr; font-size: 9px; max-width: 100%; gap: 4px 20px; }
   .front__meta > div > span { text-align: left; padding-right: 0; }
-  .front__bottom { flex-direction: column; gap: 40px; align-items: flex-start; }
-  .sect-head { grid-template-columns: 1fr; padding: 80px 0 40px; }
-  .mvt__head { grid-template-columns: 1fr; }
-  .mvt__num { font-size: 56px; }
-  .mvt__metrics { grid-template-columns: 1fr 1fr; padding: 12px 0; }
-  .mvt__metrics > div:nth-child(2) { border-right: none; }
+  .front__bottom { flex-direction: column; gap: 32px; align-items: flex-start; }
+  .front__epigraph { font-size: 15px; max-width: 90%; }
+  .front__cue { font-size: 9px; }
+  
+  .sect-head { grid-template-columns: 1fr; padding: 80px 0 32px; column-gap: 0; row-gap: 16px; }
+  .sect-num { font-size: 11px; padding-top: 8px; }
+  .sect-head h2 { font-size: clamp(28px, 6vw, 48px); }
+  .sect-desc { grid-column: 1; font-size: 16px; max-width: 100%; }
+  
+  .notes { max-width: 100%; margin-bottom: 60px; }
+  .notes li { grid-template-columns: 50px 1fr; gap: 16px; padding: 16px 0; }
+  .notes__n { font-size: 18px; }
+  .notes p { font-size: 16px; }
+  
+  .dynamics { gap: 12px; padding: 20px 0; }
+  .dyn { font-size: 20px; }
+  .dyn-key { font-size: 9px; }
+  
+  .plate { padding-bottom: 60px; }
+  .plate__cap { font-size: 12px; margin-bottom: 16px; }
+  
+  .sitewrap { aspect-ratio: 1; border-radius: 4px; overflow: hidden; }
+  .station-table h3 { font-size: 16px; margin-bottom: 16px; }
+  .station-table ol { padding-left: 20px; }
+  .station-table li { margin-bottom: 20px; }
+  .st__n { font-size: 24px; }
+  .st__body h4 { font-size: 14px; }
+  .st__coord { font-size: 10px; }
+  .st__go { font-size: 11px; padding: 8px 12px; }
+  
+  .mvt { padding: 0 var(--gutter); }
+  .mvt__head { grid-template-columns: 1fr; row-gap: 12px; }
+  .mvt__num { font-size: clamp(42px, 12vw, 80px); }
+  .mvt__title { font-size: clamp(22px, 5vw, 32px); }
+  .mvt__instr { font-size: 14px; }
+  .mvt__metrics { grid-template-columns: 1fr 1fr; padding: 12px 0; gap: 2px; }
+  .mvt__metrics > div { padding: 8px 12px; font-size: 11px; border-right: none; }
+  .mvt__metrics > div:nth-child(2n) { border-left: 1px solid var(--line); padding-left: 12px; }
   .mvt__metrics > div:nth-child(3),
-  .mvt__metrics > div:nth-child(4) { padding-top: 10px; margin-top: 10px; border-top: 1px solid var(--line); }
-  .mvt__metrics > div:nth-child(3) { padding-left: 0; }
-  .mvt__annotation { grid-template-columns: 1fr; }
-  .colophon__grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .transport { padding: 10px 16px; gap: 14px; flex-wrap: wrap; }
-  .transport__left { min-width: 0; flex: 1; }
+  .mvt__metrics > div:nth-child(4) { padding-top: 8px; margin-top: 0; border-top: 1px solid var(--line); border-left: none; }
+  .mvt__metrics > div > span { font-size: 8px; margin-bottom: 3px; }
+  
+  .mvt__opening { font-size: 18px; max-width: 100%; }
+  .drop { font-size: 52px; margin: 4px 8px -4px 0; }
+  
+  .mvt__annotation { grid-template-columns: 1fr; gap: 2px 0; padding: 16px 0; }
+  .ann { grid-template-columns: 80px 1fr; gap: 12px; padding: 6px 0; font-size: 10px; }
+  .ann__k { font-size: 8px; }
+  
+  .notation { height: 100px; }
+  .mvt__note { font-size: 15px; max-width: 100%; padding-left: 16px; }
+  
+  .cue { font-size: 10px; padding: 14px 20px; gap: 12px; }
+  .cue__icon { font-size: 12px; }
+  .cue__time { font-size: 11px; }
+  
+  .colophon { padding-top: 80px; padding-bottom: 60px; }
+  .colophon__rule { margin-bottom: 40px; }
+  .colophon__grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 60px; }
+  .colophon h4 { font-size: 9px; margin-bottom: 10px; }
+  .colophon p { font-size: 14px; }
+  .colophon__finis { font-size: 12px; padding-top: 32px; }
+  
+  .transport { padding: 10px 14px; gap: 12px; flex-wrap: wrap; }
+  .transport__left { min-width: 0; flex: 0 1 auto; }
+  .transport__idx { font-size: 8px; }
+  .transport__name { font-size: 14px; }
+  .transport__play { width: 32px; height: 32px; font-size: 11px; }
+  .transport__time { font-size: 11px; min-width: 80px; }
+  .transport__close { font-size: 11px; padding: 6px; }
   .transport__bar { order: 10; flex-basis: 100%; }
+}
+
+/* ============================================================
+   RESPONSIVE — Small mobile (480px and down)
+   ============================================================ */
+@media (max-width: 480px) {
+  :root { --gutter: clamp(14px, 3.5vw, 18px); }
+  
+  .front__title { font-size: clamp(40px, 14vw, 80px); margin-bottom: 20px; }
+  .front__sub { font-size: clamp(13px, 2.5vw, 16px); margin-bottom: 48px; }
+  .front__meta { gap: 3px 16px; font-size: 8px; }
+  .front__bottom { gap: 24px; }
+  .front__epigraph { font-size: 14px; }
+  
+  .sect-head h2 { font-size: clamp(22px, 5vw, 36px); }
+  .sect-num { font-size: 10px; }
+  
+  .mvt__head { gap: 8px; }
+  .mvt__num { font-size: clamp(36px, 10vw, 60px); }
+  .mvt__title { font-size: clamp(18px, 4vw, 24px); }
+  .mvt__instr { font-size: 13px; }
+  
+  .colophon__grid { gap: 24px; }
 }
