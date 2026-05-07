@@ -17,7 +17,7 @@
   --line-faint:   rgba(15, 13, 10, 0.08);
 
   --serif: 'EB Garamond', 'Times New Roman', serif;
-  --serif-body: 'Lora', 'Times New Roman', serif;
+  --serif-body: 'Source Serif 4', 'Georgia', serif;
   --mono:  'IBM Plex Mono', ui-monospace, monospace;
 
   --gutter: clamp(24px, 6vw, 80px);
@@ -33,11 +33,12 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--serif-body);
-  font-size: 19px;
-  line-height: 1.8;
-  font-feature-settings: "liga", "kern", "onum", "swsh";
+  font-size: 18px;
+  line-height: 1.75;
+  font-optical-sizing: auto;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
-  text-rendering: geometricPrecision;
+  text-rendering: optimizeLegibility;
 }
 
 ::selection { background: var(--ink); color: var(--paper); }
@@ -59,7 +60,7 @@ body {
 }
 
 /* --- GENERIC PAGE CONTAINER --- */
-.front, .instructions, .field, .score, .colophon, .context {
+.front, .instructions, .field, .site, .score, .colophon, .context {
   max-width: var(--max);
   margin: 0 auto;
   padding: 0 var(--gutter);
@@ -78,7 +79,7 @@ body {
 .front {
   min-height: 100vh;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: 1fr auto;
   padding-top: 48px;
   padding-bottom: 48px;
   position: relative;
@@ -146,9 +147,9 @@ body {
 }
 
 .front__meta {
-  display: inline-grid;
-  grid-template-columns: auto 1fr;
-  gap: 6px 28px;
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 8px 0;
   text-align: left;
   font-family: var(--mono);
   font-size: 11px;
@@ -163,15 +164,15 @@ body {
 .front__meta > div {
   display: contents;
 }
-.front__meta > div > span {
+.front__meta-k {
   color: var(--ink-mute);
-  padding-right: 24px;
   text-align: right;
+  padding-right: 20px;
+  white-space: nowrap;
+  align-self: start;
 }
-.front__meta > div {
-  display: grid;
-  grid-template-columns: subgrid;
-  grid-column: span 2;
+.front__meta-v {
+  color: var(--ink-soft);
 }
 
 .front__bottom {
@@ -209,7 +210,7 @@ body {
    SECTION HEAD (shared)
    ============================================================ */
 .sect-head {
-  padding: 140px 0 56px;
+  padding: clamp(72px, 12vh, 140px) 0 clamp(32px, 5vh, 56px);
   border-top: 1px solid var(--rule);
   text-align: center;
   margin-top: 40px;
@@ -233,13 +234,14 @@ body {
   color: var(--ink);
 }
 .sect-desc {
-  grid-column: 2;
   font-family: var(--serif-body);
   font-size: 17px;
   font-style: italic;
   color: var(--ink-soft);
   max-width: 60ch;
+  margin: 20px auto 0;
   line-height: 1.8;
+  text-align: center;
 }
 
 /* ============================================================
@@ -342,7 +344,7 @@ body {
   font-size: 19px;
   line-height: 1.8;
   color: var(--ink);
-  max-width: 54ch;
+  max-width: 68ch;
   letter-spacing: 0.003em;
 }
 
@@ -368,7 +370,7 @@ body {
   margin-top: 16px;
   margin-left: 24px;
   list-style-type: decimal;
-  max-width: 54ch;
+  max-width: 68ch;
 }
 
 .context__list li {
@@ -427,7 +429,7 @@ body {
   background: var(--paper-deep);
   border: 1px solid var(--rule);
   border-width: 1px 0;
-  height: 600px;
+  height: clamp(360px, 62vh, 620px);
   overflow: hidden;
 }
 
@@ -939,7 +941,7 @@ body {
 }
 .colophon__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 48px 64px;
   margin-bottom: 80px;
 }
@@ -1059,7 +1061,6 @@ body {
    ============================================================ */
 @media (max-width: 960px) {
   :root { --gutter: clamp(20px, 5vw, 60px); --max: 860px; }
-  .sect-head { column-gap: 24px; }
   .mvt__metrics { gap: 0; }
 }
 
@@ -1083,10 +1084,10 @@ body {
   .front__epigraph { font-size: 15px; max-width: 90%; }
   .front__cue { font-size: 9px; }
   
-  .sect-head { grid-template-columns: 1fr; padding: 80px 0 32px; column-gap: 0; row-gap: 16px; }
+  .sect-head { padding: 80px 0 32px; }
   .sect-num { font-size: 11px; padding-top: 8px; }
   .sect-head h2 { font-size: clamp(28px, 6vw, 48px); }
-  .sect-desc { grid-column: 1; font-size: 16px; max-width: 100%; }
+  .sect-desc { font-size: 16px; max-width: 100%; }
   
   .notes { max-width: 100%; margin-bottom: 60px; }
   .notes li { grid-template-columns: 50px 1fr; gap: 16px; padding: 16px 0; }
@@ -1102,14 +1103,13 @@ body {
   
   .sitewrap { aspect-ratio: 1; border-radius: 4px; overflow: hidden; }
   .station-table h3 { font-size: 16px; margin-bottom: 16px; }
-  .station-table ol { padding-left: 20px; }
-  .station-table li { margin-bottom: 20px; }
-  .st__n { font-size: 24px; }
-  .st__body h4 { font-size: 14px; }
+  .station-table li { grid-template-columns: 40px 1fr; gap: 12px 16px; padding: 14px 0; flex-wrap: wrap; }
+  .st__go { grid-column: 2; justify-self: start; margin-top: 4px; }
+  .st__n { font-size: 22px; }
+  .st__body h4 { font-size: 15px; }
   .st__coord { font-size: 10px; }
-  .st__go { font-size: 11px; padding: 8px 12px; }
   
-  .mvt { padding: 0 var(--gutter); }
+  .mvt { padding-top: clamp(48px, 8vh, 100px); padding-bottom: clamp(48px, 8vh, 100px); }
   .mvt__head { grid-template-columns: 1fr; row-gap: 12px; }
   .mvt__num { font-size: clamp(42px, 12vw, 80px); }
   .mvt__title { font-size: clamp(22px, 5vw, 32px); }
